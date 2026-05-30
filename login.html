@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Authentication Page</title>
+
+    <!-- MAIN CSS -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- FONT AWESOME -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <!-- LEFT PANEL -->
+        <div class="left-panel">
+
+            <div class="shape"></div>
+
+            <div class="panel-content">
+
+                <h1>WELCOME</h1>
+
+                <p>
+                    Access Your Account
+                </p>
+
+                <div class="switch">
+                    <button class="active" id="loginBtn">
+                        Login
+                    </button>
+
+                    <button id="signupBtn">
+                        Sign Up
+                    </button>
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- RIGHT PANEL -->
+        <div class="right-panel">
+
+            <!-- LOGIN FORM -->
+            <form class="form active" id="loginForm">
+
+                <!-- LOGO -->
+                <div class="logo-circle">
+
+                    <!-- ICON -->
+                    <i class="fa-solid fa-user-lock"></i>
+
+                    <!-- CUSTOM IMAGE -->
+                    <!--
+                    <img src="images/IMG.png" alt="Logo">
+                    -->
+
+                </div>
+
+                <h2>Login</h2>
+
+                <!-- EMAIL -->
+                <div class="input-box">
+                    <i class="fa-solid fa-envelope"></i>
+
+                    <input type="email"
+                        placeholder="Email Address"
+                        required>
+                </div>
+
+                <!-- PASSWORD -->
+                <div class="input-box">
+                    <i class="fa-solid fa-lock"></i>
+
+                    <input type="password"
+                        placeholder="Password"
+                        required>
+                </div>
+
+                <!-- FORGOT PASSWORD -->
+                <a href="#" class="forgot-link">
+                    Forgot Password?
+                </a>
+
+                <!-- LOGIN BUTTON -->
+                <button type="submit" class="submit-btn">
+                    LOGIN
+                </button>
+
+            </form>
+
+            <!-- SIGNUP FORM -->
+            <form class="form" id="signupForm">
+
+                <div class="logo-circle">
+                    <i class="fa-solid fa-user-plus"></i>
+                </div>
+
+                <h2>Create Account</h2>
+
+                <!-- NAME -->
+                <div class="input-box">
+                    <i class="fa-solid fa-user"></i>
+
+                    <input type="text"
+                        placeholder="Full Name"
+                        required>
+                </div>
+
+                <!-- EMAIL -->
+                <div class="input-box">
+                    <i class="fa-solid fa-envelope"></i>
+
+                    <input type="email"
+                        placeholder="Email Address"
+                        required>
+                </div>
+
+                <!-- PASSWORD -->
+                <div class="input-box">
+                    <i class="fa-solid fa-lock"></i>
+
+                    <input type="password"
+                        placeholder="Password"
+                        required>
+                </div>
+
+                <!-- SIGNUP BUTTON -->
+                <button type="submit" class="submit-btn">
+                    SIGN UP
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+    <!-- JAVASCRIPT -->
+    <script>
+
+        const loginBtn = document.getElementById("loginBtn");
+        const signupBtn = document.getElementById("signupBtn");
+
+        const loginForm = document.getElementById("loginForm");
+        const signupForm = document.getElementById("signupForm");
+
+        // LOGIN BUTTON
+        loginBtn.addEventListener("click", () => {
+
+            loginBtn.classList.add("active");
+            signupBtn.classList.remove("active");
+
+            loginForm.classList.add("active");
+            signupForm.classList.remove("active");
+
+        });
+
+        // SIGNUP BUTTON
+        signupBtn.addEventListener("click", () => {
+
+            signupBtn.classList.add("active");
+            loginBtn.classList.remove("active");
+
+            signupForm.classList.add("active");
+            loginForm.classList.remove("active");
+
+        });
+
+    </script>
+
+</body>
+</html>
