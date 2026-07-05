@@ -1,26 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
-/* ================= GLOBAL ================= */
-
-:root{
-    --primary:#8B5CF6;
-    --secondary:#C084FC;
-    --accent:#F3E8FF;
-
-    --bg:#FAFAFC;
-    --card:#FFFFFF;
-
-    --text:#111827;
-    --text-light:#6B7280;
-}
-
 *{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:'Outfit',sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Outfit', sans-serif;
 }
-
 html{
     scroll-behavior:smooth;
 }
@@ -32,14 +17,14 @@ body{
         #1e3a8a,
         #001d3d,
         #0f172a
-    );
+    );\\
     background-size:400% 400%;
     animation:gradientMove 15s ease infinite;
     color:white;
     overflow-x:hidden;
 }
 
-/* ================= ANIMATED BACKGROUND ================= */
+/* ------------------- ANIMATED BACKGROUND ------------------- */
 
 @keyframes gradientMove{
     0%{
@@ -55,7 +40,7 @@ body{
     }
 }
 
-/* ================= NAVBAR ================= */
+/* ------------------- NAVBAR ------------------- */
 
 .navbar{
     display:flex;
@@ -103,7 +88,7 @@ body{
     border-radius:10px;
 }
 
-/* ================= HERO ================= */
+/* ------------------- HERO ------------------- */
 
 .hero{
     min-height:100vh;
@@ -113,7 +98,9 @@ body{
     align-items:center;
 
     padding:80px 8%;
+
     position:relative;
+
     gap:50px;
 }
 
@@ -128,6 +115,7 @@ body{
     background:rgba(255,255,255,0.1);
 
     padding:10px 20px;
+
     border-radius:30px;
 
     margin-bottom:25px;
@@ -168,14 +156,17 @@ body{
 
 .btn-secondary{
     background:rgba(255,255,255,0.08);
+
     backdrop-filter:blur(15px);
 
     border:1px solid rgba(255,255,255,0.15);
 
     color:white;
+
     text-decoration:none;
 
     padding:15px 30px;
+
     border-radius:12px;
 }
 
@@ -191,11 +182,13 @@ body{
     max-width:600px;
 
     background:rgba(255,255,255,0.08);
+
     backdrop-filter:blur(20px);
 
     border:1px solid rgba(255,255,255,0.15);
 
     border-radius:25px;
+
     padding:20px;
 
     box-shadow:0 8px 40px rgba(0,0,0,0.3);
@@ -206,7 +199,7 @@ body{
     border-radius:20px;
 }
 
-/* ================= FLOATING BLOBS ================= */
+/* ------------------- BLOBS ------------------- */
 
 .blob{
     position:absolute;
@@ -217,7 +210,6 @@ body{
 .blob1{
     width:300px;
     height:300px;
-
     background:#2563eb;
 
     top:50px;
@@ -229,7 +221,6 @@ body{
 .blob2{
     width:250px;
     height:250px;
-
     background:#60a5fa;
 
     right:-80px;
@@ -244,7 +235,7 @@ body{
     }
 }
 
-/* ================= FEATURES ================= */
+/* ------------------- FEATURES ------------------- */
 
 .features{
     padding:100px 8%;
@@ -290,7 +281,7 @@ body{
     margin-bottom:15px;
 }
 
-/* ================= STATS ================= */
+/* ------------------- STATS ------------------- */
 
 .stats{
     display:grid;
@@ -318,7 +309,7 @@ body{
     color:#60a5fa;
 }
 
-/* ================= TESTIMONIALS ================= */
+/* ------------------- TESTIMONIALS ------------------- */
 
 .testimonials{
     padding:100px 8%;
@@ -350,7 +341,7 @@ body{
     margin-bottom:15px;
 }
 
-/* ================= CTA ================= */
+/* ------------------- CTA ------------------- */
 
 .cta{
     padding:100px 8%;
@@ -377,7 +368,7 @@ body{
     margin-bottom:30px;
 }
 
-/* ================= FOOTER ================= */
+/* ------------------- FOOTER ------------------- */
 
 footer{
     padding:50px 20px;
@@ -397,23 +388,9 @@ footer{
     margin:0 15px;
 }
 
-/* ================= FLOATING CARD ================= */
+/* ------------------- RESPONSIVE ------------------- */
 
-.floating-card{
-    position:absolute;
-
-    background:white;
-
-    border-radius:20px;
-
-    padding:20px;
-
-    box-shadow:0 20px 40px rgba(0,0,0,0.08);
-}
-
-/* ================= RESPONSIVE ================= */
-
-@media (max-width:900px){
+@media(max-width:900px){
 
     .hero{
         flex-direction:column;
@@ -434,7 +411,7 @@ footer{
     }
 }
 
-@media (max-width:600px){
+@media(max-width:600px){
 
     .navbar{
         flex-direction:column;
@@ -460,3 +437,38 @@ footer{
         font-size:2rem;
     }
 }
+
+
+
+
+
+
+:root{
+    --primary:#8B5CF6;
+    --secondary:#C084FC;
+    --accent:#F3E8FF;
+  
+    --bg:#FAFAFC;
+    --card:#FFFFFF;
+  
+    --text:#111827;
+    --text-light:#6B7280;
+  }
+
+  .floating-card{
+    position:absolute;
+  
+    background:white;
+  
+    border-radius:20px;
+  
+    padding:20px;
+  
+    box-shadow:
+    0 20px 40px rgba(0,0,0,.08);
+  }
+
+  *{
+    font-family: 'Outfit', sans-serif;
+
+  }

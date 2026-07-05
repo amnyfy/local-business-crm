@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dashboard · Local Business CRM</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/dashboard.css">
+</head>
+<body>
+
+  <div class="app-shell">
+
+    <!-- ============ SIDEBAR ============ -->
+    <aside class="sidebar">
+      <div class="brand">
+        <span class="brand-mark">◈</span>
+        <span class="brand-name">LocalCRM</span>
+      </div>
+
+      <!-- Business-type switch: this is what makes the same product
+           sellable to a salon AND a clinic. It relabels the whole UI. -->
+      <div class="vertical-switch" role="group" aria-label="Business type">
+        <button class="vswitch-btn" data-vertical="salon" id="btnSalon">💇 Salon</button>
+        <button class="vswitch-btn" data-vertical="clinic" id="btnClinic">🩺 Clinic</button>
+      </div>
+
+      <nav class="nav">
+        <span class="nav-label">Main</span>
+        <a href="dashboard.html" class="nav-item active">
+          <span class="nav-icon">▣</span> Dashboard
+        </a>
+        <a href="customers.html" class="nav-item">
+          <span class="nav-icon">◐</span> <span id="navPersonLabel">Clients</span>
+        </a>
+        <a href="leads.html" class="nav-item">
+          <span class="nav-icon">◆</span> Leads
+        </a>
+        <a href="analytics.html" class="nav-item">
+          <span class="nav-icon">▲</span> Analytics
+        </a>
+
+        <span class="nav-label">Account</span>
+        <a href="settings.html" class="nav-item">
+          <span class="nav-icon">⚙</span> Settings
+        </a>
+        <a href="login.html" class="nav-item nav-item--muted">
+          <span class="nav-icon">⏻</span> Log out
+        </a>
+      </nav>
+
+      <div class="sidebar-foot">
+        <div class="status-dot"></div>
+        <div>
+          <p class="sf-title">System status</p>
+          <p class="sf-sub">Local data · mock mode</p>
+        </div>
+      </div>
+    </aside>
+
+    <!-- ============ MAIN ============ -->
+    <div class="main">
+
+      <!-- TOPBAR -->
+      <header class="topbar">
+        <div>
+          <h1>Dashboard</h1>
+          <p class="topbar-sub" id="topbarSub">Welcome back — here's what's moving today</p>
+        </div>
+        <div class="topbar-actions">
+          <div class="search-box">
+            <span>⌕</span>
+            <input type="text" id="searchInput" placeholder="Search clients, appointments...">
+          </div>
+          <button class="icon-btn" aria-label="Notifications">🔔<span class="dot-badge"></span></button>
+          <div class="avatar">RS</div>
+        </div>
+      </header>
+
+      <!-- LIVE PULSE TICKER (signature element) -->
+      <section class="pulse-bar" aria-label="Live activity">
+        <div class="pulse-indicator">
+          <span class="pulse-dot"></span>
+          <span class="pulse-label">LIVE</span>
+        </div>
+        <div class="pulse-track">
+          <ul id="pulseFeed" class="pulse-feed"></ul>
+        </div>
+      </section>
+
+      <!-- STAT CARDS -->
+      <section class="stats-grid">
+        <div class="stat-card">
+          <p class="stat-label" id="labelTotal">Total Clients</p>
+          <p class="stat-value" id="statCustomers">0</p>
+          <p class="stat-delta up">▲ 4.2% this month</p>
+        </div>
+        <div class="stat-card">
+          <p class="stat-label">Today's Appointments</p>
+          <p class="stat-value" id="statToday">0</p>
+          <p class="stat-delta up" id="statTodayDelta">— booked today</p>
+        </div>
+        <div class="stat-card stat-card--gold">
+          <p class="stat-label">Revenue (MTD)</p>
+          <p class="stat-value" id="statRevenue">₹0</p>
+          <p class="stat-delta up">▲ 8.7% vs last month</p>
+        </div>
+        <div class="stat-card">
+          <p class="stat-label">Open Follow-ups</p>
+          <p class="stat-value" id="statFollowups">0</p>
+          <p class="stat-delta down">▼ 3 overdue</p>
+        </div>
+      </section>
+
+      <!-- UPCOMING APPOINTMENTS -->
+      <section class="panel panel--appointments">
+        <div class="panel-head">
+          <h2>Upcoming Appointments</h2>
+          <button class="add-btn" id="openAddCustomer">+ Book Appointment</button>
+        </div>
+        <ul class="appointment-list" id="appointmentList"></ul>
+      </section>
+
+      <!-- CHART + TABLE ROW -->
+      <section class="content-grid">
+
+        <div class="panel panel--chart">
+          <div class="panel-head">
+            <h2 id="chartTitle">Clients gained — last 7 days</h2>
+          </div>
+          <div class="bar-chart" id="barChart"></div>
+        </div>
+
+        <div class="panel panel--customers">
+          <div class="panel-head">
+            <h2 id="tableTitle">Recent Clients</h2>
+          </div>
+          <table class="customer-table">
+            <thead>
+              <tr><th id="thName">Client</th><th>Service</th><th>Status</th><th></th></tr>
+            </thead>
+            <tbody id="customerTableBody"></tbody>
+          </table>
+        </div>
+
+      </section>
+
+      <!-- PIPELINE STRIP -->
+      <section class="panel panel--pipeline">
+        <div class="panel-head">
+          <h2>New Client Pipeline</h2>
+        </div>
+        <div class="pipeline-strip" id="pipelineStrip"></div>
+      </section>
+
+    </div>
+  </div>
+
+  <!-- ============ ADD / BOOK MODAL ============ -->
+  <div class="modal-overlay" id="modalOverlay">
+    <div class="modal" role="dialog" aria-labelledby="modalTitle">
+      <h2 id="modalTitle">Add Client</h2>
+      <form id="addCustomerForm">
+        <label id="labelName">Client name
+          <input type="text" id="fieldName" required placeholder="e.g. Priya Sharma">
+        </label>
+        <label>Phone number
+          <input type="tel" id="fieldPhone" required placeholder="e.g. 98765 43210">
+        </label>
+        <label id="labelService">Service
+          <select id="fieldService"></select>
+        </label>
+        <label>Appointment date &amp; time
+          <input type="datetime-local" id="fieldAppointment">
+        </label>
+        <label>Status
+          <select id="fieldStatus">
+            <option value="upcoming">Upcoming</option>
+            <option value="completed">Completed</option>
+            <option value="cancelled">Cancelled / No-show</option>
+          </select>
+        </label>
+        <label>Fee / bill amount (₹)
+          <input type="number" id="fieldValue" required min="0" placeholder="e.g. 1500">
+        </label>
+        <label id="labelNotes">Preferences &amp; notes
+          <textarea id="fieldNotes" rows="2" placeholder="e.g. allergic to ammonia, prefers evening slots"></textarea>
+        </label>
+        <div class="modal-actions">
+          <button type="button" class="btn-ghost" id="closeAddCustomer">Cancel</button>
+          <button type="submit" class="btn-primary" id="submitLabel">Save Client</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+<script src="js/dashboard.js"></script>
+</body>
+</html>
